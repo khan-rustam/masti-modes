@@ -1,0 +1,21 @@
+{
+  "name": "masti-mode",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,web -c blue,green \"npm:dev -w server\" \"npm:dev -w frontend\"",
+    "dev:server": "npm run dev -w server",
+    "dev:web": "npm run dev -w frontend",
+    "build": "npm run build -w server && npm run build -w frontend",
+    "start": "npm run start -w server & npm run start -w frontend",
+    "seed:software": "npm run seed:software -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
+
+

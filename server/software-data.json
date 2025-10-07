@@ -1,0 +1,520 @@
+{
+    "categories": [
+        {
+            "categoryTitle": "Multimedia & Graphics → Video Players",
+            "apps": [
+                {
+                    "title": "VLC Media Player",
+                    "description": "VLC Media Player is a free, open-source multimedia player that supports nearly every video and audio format without needing extra codecs. It’s fast, lightweight, and highly customizable for Windows, macOS, and Linux.",
+                    "categoryId": "6703f71e8b9f4a001c2c1b01",
+                    "categoryTitle": "Multimedia & Graphics → Video Players",
+                    "type": "pc",
+                    "version": "3.0.21",
+                    "vendor": "VideoLAN",
+                    "website": "https://www.videolan.org/vlc/",
+                    "license": "open-source",
+                    "downloadLink": "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe",
+                    "altDownloadLink": "https://www.videolan.org/vlc/download-windows.html",
+                    "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/9/9a/VLC_media_player_icon.svg",
+                    "tags": [
+                        "vlc",
+                        "media player",
+                        "open source",
+                        "video player",
+                        "audio player",
+                        "free software"
+                    ],
+                    "rating": 4.9,
+                    "downloads": 3000000000,
+                    "releaseDate": "2025-06-12T00:00:00.000Z",
+                    "sizeMB": "45",
+                    "osSupport": "Windows 7/8/10/11, macOS, Linux",
+                    "notes": "VLC supports streaming, subtitles, playlists, and DVD playback without ads.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Utilities & Networking → File Compression & Extraction",
+            "apps": [
+                {
+                    "title": "WinRAR",
+                    "description": "WinRAR is a powerful archive manager that compresses files into RAR or ZIP formats and extracts over 20 archive types. It provides strong AES-256 encryption and multi-volume archive support.",
+                    "categoryId": "6703f71e8b9f4a001c2c1b02",
+                    "categoryTitle": "Utilities & Networking → File Compression & Extraction",
+                    "type": "pc",
+                    "version": "7.01",
+                    "vendor": "RARLAB",
+                    "website": "https://www.win-rar.com/",
+                    "license": "trialware",
+                    "downloadLink": "https://www.rarlab.com/rar/winrar-x64-701.exe",
+                    "altDownloadLink": "https://winrar.en.uptodown.com/windows",
+                    "thumbnailUrl": "https://www.win-rar.com/fileadmin/templates/images/logo.png",
+                    "tags": [
+                        "winrar",
+                        "file compression",
+                        "zip extractor",
+                        "rar files",
+                        "archiver"
+                    ],
+                    "rating": 4.7,
+                    "downloads": 1000000000,
+                    "releaseDate": "2025-04-03T00:00:00.000Z",
+                    "sizeMB": "6",
+                    "osSupport": "Windows 7/8/10/11",
+                    "notes": "WinRAR offers a 40-day trial but remains functional afterward; includes recovery records and solid compression.",
+                    "isActive": true
+                },
+                {
+                    "title": "7-Zip",
+                    "description": "7-Zip is a free, open-source file archiver known for its high compression ratio and lightweight performance. It supports 7z, ZIP, RAR, ISO, and more formats.",
+                    "categoryId": "6703f71e8b9f4a001c2c1b02",
+                    "categoryTitle": "Utilities & Networking → File Compression & Extraction",
+                    "type": "pc",
+                    "version": "24.06",
+                    "vendor": "Igor Pavlov",
+                    "website": "https://www.7-zip.org/",
+                    "license": "open-source",
+                    "downloadLink": "https://www.7-zip.org/a/7z2406-x64.exe",
+                    "altDownloadLink": "https://7-zip.en.uptodown.com/windows",
+                    "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f3/7zip-logo.svg",
+                    "tags": [
+                        "7zip",
+                        "archive",
+                        "file compressor",
+                        "zip extractor",
+                        "open source"
+                    ],
+                    "rating": 4.8,
+                    "downloads": 500000000,
+                    "releaseDate": "2025-05-05T00:00:00.000Z",
+                    "sizeMB": "2.5",
+                    "osSupport": "Windows 7/8/10/11",
+                    "notes": "7-Zip offers fast, free compression and integrates with Windows Explorer right-click menus.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Development → Code Editors & IDEs",
+            "apps": [
+                {
+                    "title": "Visual Studio Code",
+                    "description": "Visual Studio Code (VS Code) is a lightweight yet powerful source code editor developed by Microsoft, supporting debugging, Git control, syntax highlighting, and extensions for all major languages.",
+                    "categoryId": "6703f71e8b9f4a001c2c1b03",
+                    "categoryTitle": "Development → Code Editors & IDEs",
+                    "type": "pc",
+                    "version": "1.93.1",
+                    "vendor": "Microsoft",
+                    "website": "https://code.visualstudio.com/",
+                    "license": "free",
+                    "downloadLink": "https://update.code.visualstudio.com/latest/win32-x64-user/stable",
+                    "altDownloadLink": "https://visual-studio-code.en.uptodown.com/windows",
+                    "thumbnailUrl": "https://code.visualstudio.com/assets/images/code-stable.png",
+                    "tags": [
+                        "vscode",
+                        "code editor",
+                        "ide",
+                        "programming",
+                        "developer tools",
+                        "microsoft"
+                    ],
+                    "rating": 4.9,
+                    "downloads": 400000000,
+                    "releaseDate": "2025-08-28T00:00:00.000Z",
+                    "sizeMB": "90",
+                    "osSupport": "Windows, macOS, Linux",
+                    "notes": "VS Code supports plugins for Python, JavaScript, Java, C++, and more, with integrated terminal and Git tools.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Multimedia & Graphics → Image & Design Software",
+            "apps": [
+                {
+                    "title": "Adobe Photoshop",
+                    "description": "Adobe Photoshop is the industry-standard image editing software used by professionals for photo retouching, graphic design, and digital art creation.",
+                    "categoryId": "6703f71e8b9f4a001c2c1b04",
+                    "categoryTitle": "Multimedia & Graphics → Image & Design Software",
+                    "type": "pc",
+                    "version": "2025 (v26.5)",
+                    "vendor": "Adobe Inc.",
+                    "website": "https://www.adobe.com/products/photoshop.html",
+                    "license": "subscription",
+                    "downloadLink": "https://www.adobe.com/products/photoshop/free-trial-download.html",
+                    "altDownloadLink": "https://creativecloud.adobe.com/apps/download/photoshop",
+                    "thumbnailUrl": "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
+                    "tags": [
+                        "photoshop",
+                        "image editing",
+                        "graphic design",
+                        "photo retouching",
+                        "digital art"
+                    ],
+                    "rating": 4.8,
+                    "downloads": 200000000,
+                    "releaseDate": "2025-07-15T00:00:00.000Z",
+                    "sizeMB": "2500",
+                    "osSupport": "Windows 10/11, macOS",
+                    "notes": "Photoshop provides AI-powered tools like Generative Fill and advanced layer editing capabilities.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Utilities & Networking → System Optimization",
+            "apps": [
+                {
+                    "title": "CCleaner",
+                    "description": "CCleaner is a PC cleaning and optimization tool that removes junk files, improves performance, and protects privacy by clearing browser data.",
+                    "categoryId": "6703f71e8b9f4a001c2c1b05",
+                    "categoryTitle": "Utilities & Networking → System Optimization",
+                    "type": "pc",
+                    "version": "6.22.11034",
+                    "vendor": "Piriform Ltd.",
+                    "website": "https://www.ccleaner.com/",
+                    "license": "freemium",
+                    "downloadLink": "https://download.ccleaner.com/ccsetup622.exe",
+                    "altDownloadLink": "https://ccleaner.en.uptodown.com/windows",
+                    "thumbnailUrl": "https://www.ccleaner.com/images/icons/ccleaner-icon.svg",
+                    "tags": [
+                        "ccleaner",
+                        "system optimizer",
+                        "pc cleaner",
+                        "registry cleaner",
+                        "privacy protection"
+                    ],
+                    "rating": 4.5,
+                    "downloads": 900000000,
+                    "releaseDate": "2025-05-20T00:00:00.000Z",
+                    "sizeMB": "30",
+                    "osSupport": "Windows 7/8/10/11",
+                    "notes": "CCleaner removes temporary files and optimizes startup for faster boot performance.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Multimedia & Graphics → Video Editing & Players",
+            "apps": [
+                {
+                    "title": "KineMaster",
+                    "description": "KineMaster is a professional-grade video editing app for Android offering multi-layer editing, chroma key effects, and 4K export. It's ideal for vloggers and content creators who want powerful editing tools on mobile.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a01",
+                    "categoryTitle": "Multimedia & Graphics → Video Editing & Players",
+                    "type": "mobile",
+                    "version": "7.3.0.30120.GP",
+                    "vendor": "KineMaster Corporation",
+                    "website": "https://www.kinemaster.com/",
+                    "license": "premium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.nexstreaming.app.kinemasterfree",
+                    "altDownloadLink": "https://kinemaster.en.uptodown.com/android",
+                    "thumbnailUrl": "https://static.kinemaster.com/images/og-image.png",
+                    "images": [
+                        {
+                            "url": "https://static.kinemaster.com/images/screenshots/km-mobile.jpg",
+                            "width": 1080,
+                            "height": 720,
+                            "format": "jpg",
+                            "folder": "software/kinemaster"
+                        }
+                    ],
+                    "tags": [
+                        "video editing app",
+                        "kinemaster pro",
+                        "mobile video editor",
+                        "video maker android",
+                        "chroma key",
+                        "4K export",
+                        "vlog editing"
+                    ],
+                    "rating": 4.6,
+                    "downloads": 500000000,
+                    "releaseDate": "2025-05-01T00:00:00.000Z",
+                    "sizeMB": "130",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "KineMaster offers real-time preview, transitions, and advanced audio tools for professional video creators.",
+                    "isActive": true
+                },
+                {
+                    "title": "CapCut",
+                    "description": "CapCut is a free all-in-one video editor by ByteDance, offering AI-powered auto-captions, background removal, and effects for TikTok and Reels creators.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a01",
+                    "categoryTitle": "Multimedia & Graphics → Video Editing & Players",
+                    "type": "mobile",
+                    "version": "12.2.0",
+                    "vendor": "Bytedance Pte. Ltd.",
+                    "website": "https://www.capcut.com/",
+                    "license": "free",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.lemon.lvoverseas",
+                    "altDownloadLink": "https://www.capcutapk.com/",
+                    "thumbnailUrl": "https://www.capcut.com/static/images/logo.png",
+                    "tags": [
+                        "capcut",
+                        "video editor",
+                        "ai video editing",
+                        "tiktok editing",
+                        "mobile video maker",
+                        "shorts editor"
+                    ],
+                    "rating": 4.4,
+                    "downloads": 1000000000,
+                    "releaseDate": "2025-06-10T00:00:00.000Z",
+                    "sizeMB": "250",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "CapCut includes creative templates, AI filters, and royalty-free music for quick professional edits.",
+                    "isActive": true
+                },
+                {
+                    "title": "InShot",
+                    "description": "InShot is a powerful mobile editor for videos and photos. Trim, merge, add effects, filters, and music to make social media content in minutes.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a01",
+                    "categoryTitle": "Multimedia & Graphics → Video Editing & Players",
+                    "type": "mobile",
+                    "version": "2.091.1453",
+                    "vendor": "InShot Inc.",
+                    "website": "https://inshot.com/",
+                    "license": "free",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.camerasideas.instashot",
+                    "altDownloadLink": "https://inshot.en.uptodown.com/android",
+                    "thumbnailUrl": "https://inshot.com/images/logo.png",
+                    "tags": [
+                        "inshot",
+                        "video maker",
+                        "photo editor",
+                        "instagram reels",
+                        "tiktok video editor"
+                    ],
+                    "rating": 4.8,
+                    "downloads": 500000000,
+                    "releaseDate": "2025-04-05T00:00:00.000Z",
+                    "sizeMB": "120",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "InShot simplifies social media editing with music, transitions, filters, and text overlays.",
+                    "isActive": true
+                },
+                {
+                    "title": "MX Player Pro",
+                    "description": "MX Player Pro is an advanced Android video player featuring hardware acceleration, subtitle support, and an ad-free experience.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a01",
+                    "categoryTitle": "Multimedia & Graphics → Video Editing & Players",
+                    "type": "mobile",
+                    "version": "1.73.3",
+                    "vendor": "MX Media & Entertainment",
+                    "website": "https://www.mxplayer.in/",
+                    "license": "premium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.mxtech.videoplayer.pro",
+                    "altDownloadLink": "https://mx-player.en.uptodown.com/android",
+                    "thumbnailUrl": "https://mxplayerdownload.co/images/mxplayer-logo.png",
+                    "tags": [
+                        "mx player",
+                        "video player android",
+                        "hardware decoding",
+                        "subtitle player",
+                        "ad free"
+                    ],
+                    "rating": 4.7,
+                    "downloads": 10000000,
+                    "releaseDate": "2025-05-21T00:00:00.000Z",
+                    "sizeMB": "75",
+                    "osSupport": "Android 7.0 and above",
+                    "notes": "MX Player Pro provides smooth HD playback and gesture controls for easy media handling.",
+                    "isActive": true
+                },
+                {
+                    "title": "Alight Motion",
+                    "description": "Alight Motion lets Android users create professional motion graphics, animations, and visual effects using vector layers and keyframes.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a01",
+                    "categoryTitle": "Multimedia & Graphics → Video Editing & Players",
+                    "type": "mobile",
+                    "version": "5.1.0",
+                    "vendor": "Alight Creative, Inc.",
+                    "website": "https://alightcreative.com/alightmotion/",
+                    "license": "freemium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.alightcreative.motion",
+                    "altDownloadLink": "https://alight-motion.en.uptodown.com/android",
+                    "thumbnailUrl": "https://alightmotion.com/images/logo.png",
+                    "tags": [
+                        "motion graphics",
+                        "animation app",
+                        "keyframe animation",
+                        "mobile video editing"
+                    ],
+                    "rating": 4.4,
+                    "downloads": 100000000,
+                    "releaseDate": "2025-04-18T00:00:00.000Z",
+                    "sizeMB": "160",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "Alight Motion enables professional-level visual animations and transitions directly from mobile.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Multimedia & Graphics → Image & Graphic Design",
+            "apps": [
+                {
+                    "title": "PicsArt Photo Editor",
+                    "description": "PicsArt is an all-in-one photo and video editing app featuring AI filters, collage tools, and effects. Perfect for designing social media content with creativity.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a05",
+                    "categoryTitle": "Multimedia & Graphics → Image & Graphic Design",
+                    "type": "mobile",
+                    "version": "25.2.0",
+                    "vendor": "PicsArt, Inc.",
+                    "website": "https://picsart.com/",
+                    "license": "freemium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.picsart.studio",
+                    "altDownloadLink": "https://picsart.en.uptodown.com/android",
+                    "thumbnailUrl": "https://cdn.picsart.com/logo.png",
+                    "tags": [
+                        "photo editor",
+                        "picsart",
+                        "ai filter",
+                        "photo collage",
+                        "mobile design app"
+                    ],
+                    "rating": 4.5,
+                    "downloads": 1000000000,
+                    "releaseDate": "2025-08-10T00:00:00.000Z",
+                    "sizeMB": "200",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "PicsArt provides photo editing, video trimming, and AI-generated art for all creators.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Multimedia & Graphics → Audio & Music Software",
+            "apps": [
+                {
+                    "title": "FL Studio Mobile",
+                    "description": "FL Studio Mobile is a complete digital audio workstation for Android, featuring synthesizers, samplers, and effects for producing music on the go.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a03",
+                    "categoryTitle": "Multimedia & Graphics → Audio & Music Software",
+                    "type": "mobile",
+                    "version": "4.4.4",
+                    "vendor": "Image-Line",
+                    "website": "https://www.image-line.com/fl-studio-mobile/",
+                    "license": "premium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.imageline.FLM",
+                    "altDownloadLink": "https://fl-studio-mobile.en.uptodown.com/android",
+                    "thumbnailUrl": "https://www.image-line.com/fl-studio-mobile/images/fl-studio-mobile-icon.png",
+                    "tags": [
+                        "music production",
+                        "fl studio",
+                        "beat making app",
+                        "mobile daw",
+                        "music editing"
+                    ],
+                    "rating": 4.5,
+                    "downloads": 5000000,
+                    "releaseDate": "2025-02-14T00:00:00.000Z",
+                    "sizeMB": "250",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "FL Studio Mobile enables full-scale beat production, mixing, and exporting tracks anywhere.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Utilities & Networking → Gaming Tools & Launchers",
+            "apps": [
+                {
+                    "title": "Nova Launcher Prime",
+                    "description": "Nova Launcher Prime is a customizable Android launcher offering gestures, icon themes, and advanced layout control to personalize your home screen.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a04",
+                    "categoryTitle": "Utilities & Networking → Gaming Tools & Launchers",
+                    "type": "mobile",
+                    "version": "8.0.6",
+                    "vendor": "TeslaCoil Software",
+                    "website": "https://novalauncher.com/",
+                    "license": "premium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher.prime",
+                    "altDownloadLink": "https://novalauncher.en.uptodown.com/android",
+                    "thumbnailUrl": "https://novalauncher.com/images/icon.png",
+                    "tags": [
+                        "nova launcher",
+                        "android launcher",
+                        "custom launcher",
+                        "gesture control",
+                        "theme customization"
+                    ],
+                    "rating": 4.6,
+                    "downloads": 5000000,
+                    "releaseDate": "2025-07-22T00:00:00.000Z",
+                    "sizeMB": "15",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "Nova Launcher Prime unlocks powerful customization options and gesture shortcuts for Android.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Productivity & Business → Document Editing Suites",
+            "apps": [
+                {
+                    "title": "Tiny Scanner Pro",
+                    "description": "Tiny Scanner Pro transforms your Android device into a fast mobile document scanner. Capture, crop, enhance, and export PDFs instantly.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a06",
+                    "categoryTitle": "Productivity & Business → Document Editing Suites",
+                    "type": "mobile",
+                    "version": "5.4.3",
+                    "vendor": "Appxy",
+                    "website": "https://www.appxy.com/",
+                    "license": "premium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=com.appxy.tinyscannerpro",
+                    "altDownloadLink": "https://tiny-scanner-pro.en.uptodown.com/android",
+                    "thumbnailUrl": "https://tinyscannerapp.com/images/icon.png",
+                    "tags": [
+                        "document scanner",
+                        "pdf scanner",
+                        "mobile scanner app",
+                        "tiny scanner",
+                        "scan to pdf"
+                    ],
+                    "rating": 4.8,
+                    "downloads": 1000000,
+                    "releaseDate": "2025-03-25T00:00:00.000Z",
+                    "sizeMB": "35",
+                    "osSupport": "Android 7.0 and above",
+                    "notes": "Tiny Scanner Pro captures documents with OCR, smart cropping, and PDF sharing features.",
+                    "isActive": true
+                }
+            ]
+        },
+        {
+            "categoryTitle": "Productivity & Business → Project Management",
+            "apps": [
+                {
+                    "title": "Tasker",
+                    "description": "Tasker automates Android actions using triggers like time, location, or app events, letting you create fully personalized automation workflows.",
+                    "categoryId": "6703f71e8b9f4a001c2c1a07",
+                    "categoryTitle": "Productivity & Business → Project Management",
+                    "type": "mobile",
+                    "version": "6.3.4",
+                    "vendor": "Joaoapps",
+                    "website": "https://tasker.joaoapps.com/",
+                    "license": "premium",
+                    "downloadLink": "https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm",
+                    "altDownloadLink": "https://tasker.en.uptodown.com/android",
+                    "thumbnailUrl": "https://tasker.joaoapps.com/img/tasker_logo.png",
+                    "tags": [
+                        "automation",
+                        "tasker",
+                        "workflow",
+                        "android scripting",
+                        "smart triggers"
+                    ],
+                    "rating": 4.7,
+                    "downloads": 1000000,
+                    "releaseDate": "2025-03-01T00:00:00.000Z",
+                    "sizeMB": "20",
+                    "osSupport": "Android 8.0 and above",
+                    "notes": "Tasker lets you automate system settings and app actions with advanced scripting.",
+                    "isActive": true
+                }
+            ]
+        }
+    ]
+}

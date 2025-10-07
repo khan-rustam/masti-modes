@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: masti-mode-server
+    env: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: CORS_ORIGINS
+        value: https://masti-mode-frontend.onrender.com,https://masti-mode.onrender.com
+
+  - type: web
+    name: masti-mode-frontend
+    env: node
+    rootDir: frontend
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_BASE_API
+        fromService:
+          type: web
+          name: masti-mode-server
+          property: url
+
+
