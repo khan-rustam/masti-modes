@@ -5,6 +5,8 @@ import { toast } from 'sonner'
 import Icon from '@/components/AppIcons'
 import { Button } from '@/components/ui/button'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
+import { PencilIcon, PlusIcon, Trash2Icon } from 'lucide-react'
 
 type Category = { _id: string; title: string; description?: string; isActive?: boolean; createdAt?: string }
 
@@ -27,8 +29,10 @@ export default function AdminCategoriesPage() {
   }
 
   function startCreate() { setEditing(null); setForm({ title: '', description: '', isActive: true }); setShowForm(true) }
-  function startEdit(cat: Category) { setEditing(cat);
-    setForm({ title: cat.title, description: cat.description || '', isActive: cat.isActive !== false }); setShowForm(true) }
+  function startEdit(cat: Category) {
+    setEditing(cat);
+    setForm({ title: cat.title, description: cat.description || '', isActive: cat.isActive !== false }); setShowForm(true)
+  }
 
   async function submitForm(e: React.FormEvent) {
     e.preventDefault(); if (busy) return
@@ -43,8 +47,13 @@ export default function AdminCategoriesPage() {
   }
 
   async function remove(cat: Category) {
-    if (!confirm(`Delete category "${cat.title}"?`)) return
-    try { await categoryApi.delete(cat._id); toast.success('Category deleted'); load() } catch { toast.error('Failed to delete') }
+    try { 
+      await categoryApi.delete(cat._id); 
+      toast.success('Category deleted'); 
+      load() 
+    } catch { 
+      toast.error('Failed to delete') 
+    }
   }
 
   const stats = useMemo(() => ({ total: items.length }), [items])
@@ -56,7 +65,7 @@ export default function AdminCategoriesPage() {
           <h1 className="text-2xl font-semibold">Categories</h1>
           <p className="text-slate-600">Create and manage software categories</p>
         </div>
-        <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[6px]" onClick={startCreate}>New Category</Button>
+        <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[6px]" onClick={startCreate}><PlusIcon className="w-4 h-4" /> New</Button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -102,8 +111,29 @@ export default function AdminCategoriesPage() {
                     <td className="px-6 py-3 text-sm text-slate-600">{cat.createdAt ? new Date(cat.createdAt).toLocaleString() : '-'}</td>
                     <td className="px-6 py-3">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <Button variant="outline" className="rounded-[6px]" onClick={() => startEdit(cat)}>Edit</Button>
-                        <Button variant="outline" className="rounded-[6px]" onClick={() => remove(cat)}>Delete</Button>
+                        <Button variant="outline" className="rounded-[6px]" onClick={() => startEdit(cat)}><PencilIcon className="w-4 h-4" /></Button>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="outline" className="rounded-[6px]"><Trash2Icon className="w-4 h-4" /></Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>Delete Category</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                Are you sure you want to delete "{cat.title}"? This action cannot be undone.
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>Cancel</AlertDialogCancel>
+                              <AlertDialogAction 
+                                onClick={() => remove(cat)}
+                                className="bg-red-600 hover:bg-red-700 text-white"
+                              >
+                                Delete
+                              </AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
                       </div>
                     </td>
                   </tr>
@@ -131,7 +161,7 @@ export default function AdminCategoriesPage() {
                 <label className="text-sm font-medium">Description (optional)</label>
                 <textarea className="w-full px-3 py-2 border rounded-md" placeholder="Short description" rows={3} value={form.description} onChange={e => setForm(prev => ({ ...prev, description: e.target.value }))} />
               </div>
-              
+
               <div className="flex items-center gap-2">
                 <input id="active" type="checkbox" checked={form.isActive} onChange={e => setForm(prev => ({ ...prev, isActive: e.target.checked }))} />
                 <label htmlFor="active" className="text-sm">Active</label>

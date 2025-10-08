@@ -67,4 +67,52 @@ export async function deleteSoftware(req, res) {
   return res.json({ ok: true })
 }
 
+// Public software endpoints
+export async function getPublicSoftware(req, res) {
+  const {
+    search = '', type = '', categoryId = '', page = 1, limit = 10, sortBy = 'createdAt', sortOrder = 'desc',
+  } = req.query || {}
+  const q = { isActive: true }
+  if (search) q.$or = [{ title: new RegExp(String(search), 'i') }, { description: new RegExp(String(search), 'i') }]
+  if (type) q.type = type
+  if (categoryId) q.categoryId = categoryId
+  const pageNum = Math.max(Number(page) || 1, 1)
+  const limitNum = Math.min(Math.max(Number(limit) || 10, 1), 100)
+  const sort = { [String(sortBy)]: String(sortOrder) === 'asc' ? 1 : -1 }
+  const [items, total] = await Promise.all([
+    Software.find(q).sort(sort).skip((pageNum - 1) * limitNum).limit(limitNum),
+    Software.countDocuments(q),
+  ])
+  const totalPages = Math.ceil(total / limitNum) || 1
+  return res.json({ ok: true, software: items, pagination: { currentPage: pageNum, limit: limitNum, total, totalPages, hasPrevPage: pageNum > 1, hasNextPage: pageNum < totalPages } })
+}
+
+export async function getSoftwareById(req, res) {
+  const { id } = req.params
+  const item = await Software.findOne({ _id: id, isActive: true })
+  if (!item) return res.status(404).json({ ok: false, error: 'Software not found' })
+  return res.json({ ok: true, software: item })
+}
+
+export async function getLatestSoftware(req, res) {
+  const { limit = 6 } = req.query
+  const limitNum = Math.min(Math.max(Number(limit) || 6, 1), 50)
+  const items = await Software.find({ isActive: true }).sort({ createdAt: -1 }).limit(limitNum)
+  return res.json({ ok: true, software: items })
+}
+
+export async function getMostDownloadedSoftware(req, res) {
+  const { limit = 6 } = req.query
+  const limitNum = Math.min(Math.max(Number(limit) || 6, 1), 50)
+  const items = await Software.find({ isActive: true }).sort({ downloads: -1 }).limit(limitNum)
+  return res.json({ ok: true, software: items })
+}
+
+export async function getRecentlyUpdatedSoftware(req, res) {
+  const { limit = 6 } = req.query
+  const limitNum = Math.min(Math.max(Number(limit) || 6, 1), 50)
+  const items = await Software.find({ isActive: true }).sort({ updatedAt: -1 }).limit(limitNum)
+  return res.json({ ok: true, software: items })
+}
+
 

@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import type { Software } from "@/lib/software-data"
+import type { Software } from "@/hooks/use-software"
 
 interface SoftwareDetailClientProps {
   software: Software
@@ -17,12 +17,14 @@ interface SoftwareDetailClientProps {
 export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
   const [currentScreenshot, setCurrentScreenshot] = useState(0)
 
+  const screenshots = software.images?.map(img => img.url) || []
+  
   const nextScreenshot = () => {
-    setCurrentScreenshot((prev) => (prev + 1) % software.screenshots.length)
+    setCurrentScreenshot((prev) => (prev + 1) % screenshots.length)
   }
 
   const prevScreenshot = () => {
-    setCurrentScreenshot((prev) => (prev - 1 + software.screenshots.length) % software.screenshots.length)
+    setCurrentScreenshot((prev) => (prev - 1 + screenshots.length) % screenshots.length)
   }
 
   return (
@@ -37,11 +39,11 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
             className="mx-auto max-w-5xl"
           >
             <div className="mb-4 flex flex-wrap items-center gap-2">
-              <Badge variant="secondary">{software.category}</Badge>
+              <Badge variant="secondary">{software.categoryTitle}</Badge>
               <Badge variant="outline">{software.license}</Badge>
             </div>
 
-            <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl text-balance">{software.name}</h1>
+            <h1 className="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl text-balance">{software.title}</h1>
 
             <p className="mb-6 text-lg text-muted-foreground md:text-xl text-pretty">{software.description}</p>
 
@@ -69,13 +71,17 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2">
-                <Download className="h-5 w-5" />
-                Download {software.version}
+              <Button size="lg" className="gap-2" asChild>
+                <a href={software.downloadLink} target="_blank" rel="noopener noreferrer">
+                  <Download className="h-5 w-5" />
+                  Download {software.version}
+                </a>
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 bg-transparent">
-                <ExternalLink className="h-5 w-5" />
-                Visit Website
+              <Button size="lg" variant="outline" className="gap-2 bg-transparent" asChild>
+                <a href={software.website} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="h-5 w-5" />
+                  Visit Website
+                </a>
               </Button>
             </div>
           </motion.div>
@@ -98,12 +104,12 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
                 <h2 className="mb-4 text-2xl font-bold">Screenshots</h2>
                 <div className="relative aspect-video overflow-hidden rounded-lg bg-muted">
                   <Image
-                    src={software.screenshots[currentScreenshot] || "/placeholder.svg"}
-                    alt={`${software.name} screenshot ${currentScreenshot + 1}`}
+                    src={screenshots[currentScreenshot] || software.thumbnailUrl || "/placeholder.svg"}
+                    alt={`${software.title} screenshot ${currentScreenshot + 1}`}
                     fill
                     className="object-cover"
                   />
-                  {software.screenshots.length > 1 && (
+                  {screenshots.length > 1 && (
                     <>
                       <Button
                         size="icon"
@@ -122,7 +128,7 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
                         <ChevronRight className="h-5 w-5" />
                       </Button>
                       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
-                        {software.screenshots.map((_, index) => (
+                        {screenshots.map((_, index) => (
                           <button
                             key={index}
                             onClick={() => setCurrentScreenshot(index)}
@@ -144,8 +150,8 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mb-8"
               >
-                <h2 className="mb-4 text-2xl font-bold">About {software.name}</h2>
-                <p className="text-muted-foreground leading-relaxed text-pretty">{software.longDescription}</p>
+                <h2 className="mb-4 text-2xl font-bold">About {software.title}</h2>
+                <p className="text-muted-foreground leading-relaxed text-pretty">{software.description}</p>
               </motion.div>
 
               {/* Features */}
@@ -157,14 +163,14 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
               >
                 <h2 className="mb-4 text-2xl font-bold">Key Features</h2>
                 <div className="grid gap-3 sm:grid-cols-2">
-                  {software.features.map((feature, index) => (
+                  {software.tags?.map((tag, index) => (
                     <div key={index} className="flex items-start gap-3">
                       <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/10">
                         <Check className="h-3 w-3 text-primary" />
                       </div>
-                      <span className="text-sm leading-relaxed">{feature}</span>
+                      <span className="text-sm leading-relaxed">{tag}</span>
                     </div>
-                  ))}
+                  )) || []}
                 </div>
               </motion.div>
 
@@ -178,14 +184,22 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
                 <Card>
                   <CardContent className="p-6">
                     <div className="space-y-3">
-                      {software.requirements.map((requirement, index) => (
-                        <div key={index} className="flex items-start gap-3">
+                      {software.osSupport && (
+                        <div className="flex items-start gap-3">
                           <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted">
                             <Monitor className="h-3 w-3" />
                           </div>
-                          <span className="text-sm">{requirement}</span>
+                          <span className="text-sm">Operating System: {software.osSupport}</span>
                         </div>
-                      ))}
+                      )}
+                      {software.sizeMB && (
+                        <div className="flex items-start gap-3">
+                          <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-muted">
+                            <Monitor className="h-3 w-3" />
+                          </div>
+                          <span className="text-sm">Size: {software.sizeMB} MB</span>
+                        </div>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -213,7 +227,7 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
                     <Separator />
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-muted-foreground">File Size</span>
-                      <span className="text-sm font-medium">{software.fileSize}</span>
+                      <span className="text-sm font-medium">{software.sizeMB} MB</span>
                     </div>
                     <Separator />
                     <div className="flex items-center justify-between">
@@ -223,22 +237,24 @@ export function SoftwareDetailClient({ software }: SoftwareDetailClientProps) {
                     <Separator />
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-muted-foreground">Developer</span>
-                      <span className="text-sm font-medium">{software.developer}</span>
+                      <span className="text-sm font-medium">{software.vendor}</span>
                     </div>
                     <Separator />
                     <div>
                       <span className="mb-2 block text-sm text-muted-foreground">Operating System</span>
                       <div className="flex flex-wrap gap-2">
-                        {software.operatingSystem.map((os, index) => (
-                          <Badge key={index} variant="outline" className="text-xs">
-                            {os}
+                        {software.osSupport && (
+                          <Badge variant="outline" className="text-xs">
+                            {software.osSupport}
                           </Badge>
-                        ))}
+                        )}
                       </div>
                     </div>
-                    <Button className="w-full gap-2" size="lg">
-                      <Download className="h-5 w-5" />
-                      Download Now
+                    <Button className="w-full gap-2" size="lg" asChild>
+                      <a href={software.downloadLink} target="_blank" rel="noopener noreferrer">
+                        <Download className="h-5 w-5" />
+                        Download Now
+                      </a>
                     </Button>
                   </CardContent>
                 </Card>

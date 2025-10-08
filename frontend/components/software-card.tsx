@@ -7,7 +7,7 @@ import { motion, useMotionValue } from "framer-motion"
 import { Download, Star, ArrowRight } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import type { Software } from "@/lib/software-data"
+import type { Software } from "@/hooks/use-software"
 
 interface SoftwareCardProps {
   software: Software
@@ -38,7 +38,7 @@ export function SoftwareCard({ software, index = 0 }: SoftwareCardProps) {
       transition={{ duration: 0.45, delay: Math.min(index * 0.05, 0.25), ease: [0.22, 1, 0.36, 1] }}
       className="h-full [perspective:1000px]"
     >
-      <Link href={`/software/${software.id}`} className="block h-full">
+      <Link href={`/software/${software._id}`} className="block h-full">
         <Card
           className="group relative h-full overflow-hidden rounded-md border border-gray-100 bg-white shadow-sm hover:shadow-none transition-all duration-300 will-change-transform [transform-style:preserve-3d] hover:-translate-y-1.5"
           onMouseMove={handleMouseMove}
@@ -52,8 +52,8 @@ export function SoftwareCard({ software, index = 0 }: SoftwareCardProps) {
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
               <Image
-                src={"/placeholder.jpg"}
-                alt={software.name}
+                src={software.thumbnailUrl || "/placeholder.jpg"}
+                alt={software.title}
                 fill
                 className="object-cover"
               />
@@ -88,7 +88,7 @@ export function SoftwareCard({ software, index = 0 }: SoftwareCardProps) {
           <CardContent className="p-5 space-y-3">
             <div className="space-y-2">
               <h3 className="text-xl font-medium leading-tight text-balance transition-colors duration-300 group-hover:text-primary line-clamp-2">
-                {software.name}
+                {software.title}
               </h3>
 
               <p className="text-sm text-muted-foreground line-clamp-2 text-pretty leading-relaxed font-light min-h-[3.25rem]">
@@ -98,7 +98,7 @@ export function SoftwareCard({ software, index = 0 }: SoftwareCardProps) {
 
             <div className="flex items-center justify-between pt-2">
               <Badge variant="secondary" className="text-xs font-normal">
-                {software.category}
+                {software.categoryTitle}
               </Badge>
               <div className="flex items-center gap-3 text-xs text-muted-foreground">
                 <div className="flex items-center gap-1">

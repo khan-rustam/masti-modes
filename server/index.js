@@ -7,6 +7,7 @@ import contactRoutes from './routes/contactRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import cloudinaryRoutes from './routes/cloudinaryRoutes.js'
 import softwareRoutes from './routes/softwareRoutes.js'
+import publicSoftwareRoutes from './routes/publicSoftwareRoutes.js'
 import { getEnv } from './utils/env.js'
 import { connectToDatabase } from './utils/db.js'
 
@@ -28,6 +29,7 @@ app.use('/api/admin/contacts', contactRoutes)
 app.use('/api/admin/categories', categoryRoutes)
 app.use('/api/admin/cloudinary', cloudinaryRoutes)
 app.use('/api/admin/software', softwareRoutes)
+app.use('/api/software', publicSoftwareRoutes)
 
 // Start server and optionally connect DB
 const PORT = Number(env.PORT) || 5000

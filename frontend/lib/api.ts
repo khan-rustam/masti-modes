@@ -151,4 +151,17 @@ export const softwareApi = {
   delete: (id: string) => api.delete<{ ok: boolean }>(`/api/admin/software/${id}`),
 }
 
+// Public software endpoints
+export const publicSoftwareApi = {
+  list: (params: Partial<{ search: string; type: 'pc' | 'mobile' | ''; categoryId: string; page: number; limit: number; sortBy: string; sortOrder: 'asc' | 'desc' }>) => {
+    const qs = new URLSearchParams()
+    Object.entries(params || {}).forEach(([k, v]) => { if (v !== undefined && v !== null && v !== '') qs.append(k, String(v)) })
+    return api.get<{ ok: boolean; software: any[]; pagination: any }>(`/api/software?${qs.toString()}`)
+  },
+  getById: (id: string) => api.get<{ ok: boolean; software: any }>(`/api/software/${id}`),
+  getLatest: (limit = 6) => api.get<{ ok: boolean; software: any[] }>(`/api/software/latest?limit=${limit}`),
+  getMostDownloaded: (limit = 6) => api.get<{ ok: boolean; software: any[] }>(`/api/software/most-downloaded?limit=${limit}`),
+  getRecentlyUpdated: (limit = 6) => api.get<{ ok: boolean; software: any[] }>(`/api/software/recently-updated?limit=${limit}`),
+}
+
 

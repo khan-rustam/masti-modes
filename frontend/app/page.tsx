@@ -7,7 +7,7 @@ import { Star, TrendingUp, Clock, Zap, Shield, Users } from "lucide-react"
 import { SoftwareCard } from "@/components/software-card"
 import { NewsletterSection } from "@/components/newsletter-section"
 import { Button } from "@/components/ui/button"
-import { getLatestSoftware, getMostDownloaded, getRecentlyUpdated } from "@/lib/software-data"
+import { useLatestSoftware, useMostDownloadedSoftware, useRecentlyUpdatedSoftware } from "@/hooks/use-software"
 import Link from "next/link"
 
 
@@ -30,9 +30,9 @@ export default function HomePage() {
   const { scrollYProgress } = useScroll()
   const yBubbleLeft = useTransform(scrollYProgress, [0, 1], [0, -120])
   const yBubbleRight = useTransform(scrollYProgress, [0, 1], [0, 140])
-  const latestSoftware = getLatestSoftware(6)
-  const mostDownloaded = getMostDownloaded(6)
-  const recentlyUpdated = getRecentlyUpdated(6)
+  const { software: latestSoftware, loading: latestLoading } = useLatestSoftware(6)
+  const { software: mostDownloaded, loading: mostDownloadedLoading } = useMostDownloadedSoftware(6)
+  const { software: recentlyUpdated, loading: recentlyUpdatedLoading } = useRecentlyUpdatedSoftware(6)
 
   return (
     <div className="flex flex-col">

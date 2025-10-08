@@ -5,6 +5,8 @@ import { api } from '@/lib/api'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '@/components/ui/alert-dialog'
+import { PencilIcon, PlusIcon, Trash2Icon } from 'lucide-react'
 
 type Category = { _id: string; title: string }
 
@@ -17,8 +19,6 @@ export default function AdminSoftwarePage() {
   const [filters, setFilters] = useState<{ search: string; type: '' | 'pc' | 'mobile'; categoryId: string }>({ search: '', type: '', categoryId: '' })
   const [showForm, setShowForm] = useState(false)
   const [editing, setEditing] = useState<any | null>(null)
-  const [showDelete, setShowDelete] = useState(false)
-  const [selected, setSelected] = useState<any | null>(null)
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -77,6 +77,7 @@ export default function AdminSoftwarePage() {
       const res = await softwareApi.list({ search: filters.search, type: filters.type, categoryId: filters.categoryId, page, limit: pagination.limit })
       setItems(res.software || [])
       setPagination(res.pagination || { currentPage: page, limit: pagination.limit, total: 0, totalPages: 1 })
+      console.log(res)
     } catch { toast.error('Failed to load software') } finally { setListLoading(false) }
   }
 
@@ -159,8 +160,6 @@ export default function AdminSoftwarePage() {
       toast.loading('Deleting…')
       await softwareApi.delete(id)
       toast.success('Software and associated images deleted (where possible)')
-      setShowDelete(false)
-      setSelected(null)
       loadList(pagination.currentPage)
     } catch { toast.error('Delete failed') } finally { toast.dismiss() }
   }
@@ -211,7 +210,7 @@ export default function AdminSoftwarePage() {
           <h1 className="text-2xl font-semibold">Software Manager</h1>
           <p className="text-slate-600">Manage software entries and create new ones</p>
         </div>
-        <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[6px]" onClick={() => { setEditing(null); setShowForm(true) }}>Create New Software</Button>
+        <Button className="bg-orange-500 hover:bg-orange-600 text-white rounded-[6px]" onClick={() => { setEditing(null); setShowForm(true) }}><PlusIcon className="w-4 h-4" /> New</Button>
       </div>
 
       {/* Filters and List */}
@@ -268,9 +267,30 @@ export default function AdminSoftwarePage() {
                       <td className="px-6 py-3">{formatCompactNumber(item.downloads || 0)}</td>
                       <td className="px-6 py-3"><span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${item.isActive !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-red-100 text-red-800'}`}>{item.isActive !== false ? 'Active' : 'Inactive'}</span></td>
                       <td className="px-6 py-3">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <Button variant="outline" className="rounded-[6px]" onClick={() => startEdit(item)}>Edit</Button>
-                          <Button variant="outline" className="rounded-[6px]" onClick={() => { setSelected(item); setShowDelete(true); toast.message('Ready to delete. Confirm in the dialog.') }}>Delete</Button>
+                        <div className="flex items-center gap-2 ">
+                          <Button variant="outline" className="rounded-[6px]" onClick={() => startEdit(item)}><PencilIcon className="w-4 h-4" /></Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="outline" className="rounded-[6px]"><Trash2Icon className="w-4 h-4" /></Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Delete Software</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Are you sure you want to delete "{item.title}"? This action cannot be undone and will also delete associated images.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Cancel</AlertDialogCancel>
+                                <AlertDialogAction 
+                                  onClick={() => handleDelete(item._id)}
+                                  className="bg-red-600 hover:bg-red-700 text-white"
+                                >
+                                  Delete
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                         </div>
                       </td>
                     </tr>
@@ -480,33 +500,6 @@ export default function AdminSoftwarePage() {
         </div>
       )}
 
-      {/* Delete confirm modal */}
-      {showDelete && selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white rounded-md p-6 w-full max-w-sm mx-4">
-            <h3 className="font-semibold mb-2">Delete Software</h3>
-            <p className="text-sm text-slate-600 mb-4">Are you sure you want to delete "{selected.title}"? This action cannot be undone.</p>
-            <div className="flex gap-2 justify-end">
-              <Button
-                variant="outline"
-                className="rounded-[6px]"
-                onClick={() => {
-                  setShowDelete(false);
-                  toast.message('Delete cancelled');
-                }}
-              >
-                Cancel
-              </Button>
-              <Button
-                className="bg-red-600 hover:bg-red-700 text-white rounded-[6px]"
-                onClick={() => handleDelete(selected._id)}
-              >
-                Delete
-              </Button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
